@@ -1,67 +1,116 @@
-# Making a hash table with C
-This is a small project where i am going to make a hash
-table data structure in C from scratch. The main features:<br>
-<ol>
-    <li>Insertion</li>
-    <li>Search</li>
-    <li>Hash Function</li>
-    <li>Delete</li>
-    <li>Rehashing</li>
-</ol>
-This was made following this [repo](https://github.com/jamesroutley/write-a-hash-table) by [JamesRoutley](https://github.com/jamesroutley)<br>
-A good [video](https://www.youtube.com/watch?v=YIoZQwWJIDA) to understand Collisions in Hashing.
-## So what's a hash table?
-A hash table is a data structure which allows us to map
-large data to a small set of data. This is done by using
-a hash function. It is an irreversible process.
-## Structs
-So the hash table item will have two fields:
-<ol>
-    <li> The key</li>
-    <li> The value</li>
-</ol>
-The hash table itself will have three fields:  
-<ol>
-    <li>Size</li>
-    <li>Count</li>
-    <li>The items stored in the table</li>
-</ol>
-## Adding an item
-To add an item we create a new item i. Then we allocate
-memory to that item and assign the key and the value.
-## Deleting an item
-We free the memory allocated previously to that item.
-## Creating a hash_table
-We create a new variable ht and we allocate memory according
-to the size of that hash_table and taking in consideration 
-the size of a single item.
-## Deleting a hash_table
-We delete all the items stored in the hash table so we can 
-free the memory allocated to those. After that we can delete
-the whole hashtable by freeing the memory allocated to it.
-## Hashing
-Hashing is a technique that maps a large set of data to a 
-small set of data. It uses a hash function for doing this 
-mapping. It is an irreversible process and we cannot find
-the original value of the key from its hashed value because
-we are trying to map a large set of data into a small set 
-of data, which may cause collisions. It is not uncommon to
-encounter collisions when mapping a large dataset into a 
-smaller one. Suppose, We have three buckets and each bucket
-can store 1L of water in it and we have 5L of water also.
-We have to put all the water in these three buckets and this
-kind of situation is known as a collision. URL shorteners are
-an example of hashing as it maps large size URL to small size.
-[W3C](https://www.geeksforgeeks.org/implementation-of-hash-table-in-c-using-separate-chaining/)  
-For the hashing i will use this algorithm :  
-DJB2 Hashing Algorithm:  
-Initial Hash Value (5381):  
-This value is chosen to ensure a good distribution of hash values.  
-Main Loop:  
-The algorithm processes each character in the string. For each 
-character, it shifts the current hash value left by 5 bits 
-(hash << 5), multiplies the result by 33 (hash * 33)  
-Maybe in the future i will create my own hashing algorithm, we
-should take in consideration that a stronger hash algorithm the
-more we avoid Collisions.  
+# **Making a Hash Table in C**
+
+This is a small project where I build a **hash table** data structure in C from scratch. The main features include:
+
+- **Insertion**
+- **Search**
+- **Hash Function**
+- **Delete**
+- **Rehashing**
+
+> **Reference**: This project was inspired by this [repository](https://github.com/jamesroutley/write-a-hash-table) by [James Routley](https://github.com/jamesroutley).  
+> A helpful [video](https://www.youtube.com/watch?v=YIoZQwWJIDA) explains collisions in hashing.
+
+---
+
+## **What’s a Hash Table?**
+
+A **hash table** is a data structure that allows us to map **large data** into a smaller set using a **hash function**.  
+Key characteristics:
+- **Efficient data retrieval:** Provides average O(1) time complexity for insert, delete, and search operations.
+- **Irreversible process:** The hash function is designed to be one-way, meaning it’s not possible to derive the original value from the hashed value.
+
+---
+
+## **Structs**
+
+### **Hash Table Item**
+The hash table item has two fields:
+1. **Key**
+2. **Value**
+
+### **Hash Table**
+The hash table itself has three fields:
+1. **Size** – Total capacity of the hash table.
+2. **Count** – Current number of items in the table.
+3. **Items** – The actual key-value pairs stored in the table.
+
+---
+
+## **Adding an Item**
+1. Create a new item `i`.
+2. Allocate memory for the item.
+3. Assign the key and value to the allocated memory.
+
+---
+
+## **Deleting an Item**
+1. Free the memory allocated to the specific item.
+
+---
+
+## **Creating a Hash Table**
+1. Create a new hash table variable `ht`.
+2. Allocate memory for the hash table, accounting for:
+   - The table size.
+   - The size of each item.
+
+---
+
+## **Deleting a Hash Table**
+1. Delete all items stored in the hash table by freeing their memory.
+2. Free the memory allocated to the entire hash table.
+
+---
+
+## **Hashing**
+
+Hashing is the technique of mapping a **large set of data** into a **smaller set of data** using a **hash function**.  
+> **Key Properties of Hashing**:
+> - **Collisions**: Occur when multiple keys map to the same hash value.  
+> - **Applications**: URL shorteners, cryptographic functions, and more.
+
+### **Collision Example**
+Imagine having:
+- **3 buckets**, each storing up to 1L of water.
+- **5L of water** to distribute among these buckets.  
+
+Since the buckets can't hold all the water, some water "overflows," creating **collisions**.
+
+---
+
+## **Hashing Algorithm: DJB2**
+
+This project uses the **DJB2 hashing algorithm**, known for its simplicity and good distribution.
+
+### **Steps**:
+1. **Initial Hash Value**: `5381`
+   - Chosen to ensure a good spread of hash values.
+2. **Main Loop**:
+   - For each character in the string:
+     - Shift the current hash value left by 5 bits: `hash << 5`
+     - Multiply the result by 33: `hash * 33`
+
+### **Example Code**:
+```c
+unsigned long djb2(const char *str) {
+    unsigned long hash = 5381;
+    int c;
+
+    while ((c = *str++)) {
+        hash = ((hash << 5) + hash) + c; // hash * 33 + c
+    }
+
+    return hash;
+}
+```
+### **Future Plans**
+- Implement a **custom hashing algorithm** to better avoid collisions.
+- Explore stronger hash functions for enhanced performance.
+
+---
+
+## **References**
+- [GeeksforGeeks: Hash Table Implementation](https://www.geeksforgeeks.org/implementation-of-hash-table-in-c-using-separate-chaining/)
+- [Repository by James Routley](https://github.com/jamesroutley/write-a-hash-table)
 

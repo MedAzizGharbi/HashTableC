@@ -130,7 +130,6 @@ int main(){
 	char* st;
 	printf("Aala chkoun theb tlawej? : \n");
 	scanf("%s" , st);
-		if(strcmp(st , "quit")) return 0;
 	printf("El lakab: %s \n" ,ht_search(ht, st));
 	ht_del_hash_table(ht);
 }

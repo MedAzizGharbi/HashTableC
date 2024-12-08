@@ -1,23 +1,31 @@
 # Making a hash table with C
 This is a small project where i am going to make a hash
-table data structure in C from scratch. The main features:  
-    1)Insertion  
-    2)Search  
-    3)Hash Function  
-    4)Delete  
-    5)Rehashing  
+table data structure in C from scratch. The main features:<br>
+<ol>
+    <li>Insertion</li>
+    <li>Search</li>
+    <li>Hash Function</li>
+    <li>Delete</li>
+    <li>Rehashing</li>
+</ol>
+This was made following this [repo](https://github.com/jamesroutley/write-a-hash-table) by [JamesRoutley](https://github.com/jamesroutley)<br>
+A good [video](https://www.youtube.com/watch?v=YIoZQwWJIDA) to understand Collisions in Hashing.
 ## So what's a hash table?
 A hash table is a data structure which allows us to map
 large data to a small set of data. This is done by using
 a hash function. It is an irreversible process.
 ## Structs
-So the hash table item will have two fields:  
-    1) The key  
-    2) The value  
+So the hash table item will have two fields:
+<ol>
+    <li> The key</li>
+    <li> The value</li>
+</ol>
 The hash table itself will have three fields:  
-    1)Size  
-    2)Count  
-    3)The items stored in the table  
+<ol>
+    <li>Size</li>
+    <li>Count</li>
+    <li>The items stored in the table</li>
+</ol>
 ## Adding an item
 To add an item we create a new item i. Then we allocate
 memory to that item and assign the key and the value.

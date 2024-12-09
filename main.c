@@ -123,14 +123,6 @@ void ht_delete(ht_hash_table* ht, const char*key){
 }
 
 int main(){
-	ht_hash_table* ht = ht_new();
-	ht_insert(ht, "Wassim" , "Fathallah");
-	ht_insert(ht, "Aziz" , "Gharbi");
-	ht_insert(ht, "Amen" , "Slema");
-	char* st;
-	printf("Aala chkoun theb tlawej? : \n");
-	scanf("%s" , st);
-	printf("El lakab: %s \n" ,ht_search(ht, st));
-	ht_del_hash_table(ht);
+	return 0;
 }
 
